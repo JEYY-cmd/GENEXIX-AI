@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore GENEXIX capabilities for reasoning, research, visual analysis and creative collaboration.">
+  <title>GENEXIX Capabilities</title>
+  <style>
+    /*
+      CSS READING GUIDE
+      :root stores reusable color and size variables so the theme is easy to change.
+      The * selector applies box sizing to every element on the page.
+      A selector beginning with a dot, such as .button, styles elements with that class.
+      display:flex places items in a flexible row or column; display:grid creates a grid layout.
+      margin controls space outside an element; padding controls space inside it.
+      color changes text color; background changes the area behind an element.
+      border-radius rounds corners; 999px creates the fully rounded pill-shaped tabs.
+      position controls how decorative and sticky elements are placed.
+      transition and :hover create smooth visual feedback when a pointer moves over an item.
+      @media rules rearrange layouts for tablets and phones so every page stays responsive.
+    */
+    /* ---------- Color system and global page rules ---------- */
+    :root{--navy:#071a38;--navy-2:#0c2854;--royal:#2457ff;--royal-2:#1743d8;--sky:#bfe3ff;--lime:#caff36;--lime-soft:#edffb3;--ice:#edf7ff;--white:#fff;--black:#05070b;--muted:#63728a;--line:#d4e4f2;--radius:24px;--shadow:0 24px 70px rgba(7,26,56,.15)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--navy);background:var(--white);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}button{font:inherit}.container{width:min(1160px,calc(100% - 36px));margin:auto}
+
+    /* ---------- Shared navigation ---------- */
+    header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}.navbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:28px}.brand{display:flex;align-items:center;gap:11px;font-size:1.14rem;font-weight:900;letter-spacing:-.04em}.brand-mark{position:relative;width:41px;height:41px;border-radius:13px;background:var(--navy);}.brand-mark::before,.brand-mark::after{content:"";position:absolute;border-radius:50%}.brand-mark::before{width:17px;height:17px;left:8px;top:8px;background:var(--royal)}.brand-mark::after{width:10px;height:10px;right:7px;bottom:7px;background:var(--sky)}.nav-links{display:flex;align-items:center;gap:5px}.nav-links a{padding:9px 14px;border-radius:999px;font-size:.85rem;font-weight:800}.nav-links a:hover,.nav-links a.active{background:var(--navy);color:var(--white)}.nav-action{border:1px solid var(--royal);background:var(--royal);color:var(--white)!important}.menu-button{display:none;width:43px;height:43px;border:1px solid var(--navy);border-radius:12px;background:var(--sky);color:var(--navy);cursor:pointer;font-size:1.15rem}
+
+    /* ---------- Capabilities page introduction ---------- */
+    .page-hero{position:relative;overflow:hidden;padding:94px 0;background:linear-gradient(120deg,var(--royal) 0 69%,var(--sky) 69%);color:var(--white)}.page-hero::after{content:"";position:absolute;right:7%;top:-105px;width:290px;height:290px;border:46px solid var(--navy);border-radius:50%;opacity:.13}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.18fr .82fr;gap:60px;align-items:end}.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--ice);color:var(--royal-2);font-size:.69rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase}.page-hero .eyebrow{border-color:rgba(255,255,255,.4);background:rgba(7,26,56,.18);color:var(--white)}.eyebrow.dark{border-color:#31547d;background:#0b244a;color:var(--sky)}h1{margin:21px 0 0;font-size:clamp(3.8rem,8vw,6.9rem);line-height:.88;letter-spacing:-.077em}.hero-grid p{margin:0;color:#eef7ff;font-size:1.05rem;font-weight:700}
+
+    /* ---------- Capability cards ---------- */
+    section{padding:90px 0}.section-heading{max-width:720px;margin-bottom:39px}.section-heading h2{margin:14px 0 10px;color:var(--black);font-size:clamp(2.4rem,5vw,4rem);line-height:.98;letter-spacing:-.056em}.section-heading p{margin:0;color:var(--muted)}.capability-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.capability{position:relative;min-height:320px;display:flex;flex-direction:column;overflow:hidden;padding:30px;border:1px solid var(--line);border-radius:var(--radius);background:var(--ice);transition:.25s}.capability::after{content:attr(data-number);position:absolute;right:15px;bottom:-48px;color:transparent;-webkit-text-stroke:1px #c6ddef;font-size:9.4rem;font-weight:950;line-height:1}.capability:hover{border-color:var(--royal);transform:translateY(-5px);}.capability-top{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center}.capability-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:15px;background:var(--navy);color:var(--sky);font-weight:950}.capability-badge{padding:6px 10px;border-radius:999px;background:var(--royal);color:var(--white);font-size:.63rem;font-weight:900;text-transform:uppercase}.capability h3{position:relative;z-index:1;margin:28px 0 9px;color:var(--black);font-size:1.48rem}.capability p{position:relative;z-index:1;max-width:500px;margin:0;color:var(--muted)}.use-cases{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:22px}.use-cases span{padding:6px 9px;border:1px solid #c4d9e9;border-radius:999px;background:var(--white);font-size:.65rem;font-weight:800}
+
+    /* ---------- Workflow section ---------- */
+    .workflow{background:var(--navy);color:var(--white)}.workflow .section-heading h2{color:var(--white)}.workflow .section-heading p{color:#a9bdd6}.workflow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.step{padding:24px;border:1px solid #294a74;border-radius:18px;background:#0b234a}.step b{display:grid;place-items:center;width:35px;height:35px;border-radius:10px;background:var(--sky);color:var(--navy)}.step h3{margin:21px 0 7px;font-size:1rem}.step p{margin:0;color:#a9bdd6;font-size:.84rem}
+
+    /* ---------- Final access invitation ---------- */
+    .cta{padding:58px 0}.cta-card{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:43px;border-radius:var(--radius);background:linear-gradient(120deg,var(--royal),var(--navy));color:var(--white);}.cta-card h2{max-width:690px;margin:0;font-size:clamp(2rem,5vw,3.5rem);line-height:1;letter-spacing:-.05em}.button{min-height:51px;display:inline-flex;align-items:center;justify-content:center;padding:0 23px;border:1px solid var(--white);border-radius:12px;background:var(--white);color:var(--navy);font-size:.84rem;font-weight:900;white-space:nowrap;transition:.2s}.button:hover{transform:translateY(-3px);}footer{margin-top:60px;padding:32px 0;background:var(--black);color:var(--white)}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:22px}.footer-row p{margin:0;color:#8fa0b5;font-size:.8rem}.footer-nav{display:flex;gap:18px;font-size:.78rem;font-weight:800}.footer-nav a:hover{color:var(--sky)}
+
+    /* ---------- Responsive layouts ---------- */
+    @media(max-width:850px){.menu-button{display:block}.nav-links{position:absolute;left:18px;right:18px;top:78px;display:none;flex-direction:column;align-items:stretch;padding:10px;border:1px solid var(--navy);border-radius:16px;background:var(--white);}.nav-links.open{display:flex}.nav-links a{padding:12px 14px}.hero-grid{grid-template-columns:1fr}.capability-grid{grid-template-columns:1fr}.workflow-grid{grid-template-columns:1fr 1fr}.cta-card,.footer-row{align-items:flex-start;flex-direction:column}}
+    @media(max-width:540px){.container{width:min(100% - 26px,1160px)}.page-hero{padding:68px 0}h1{font-size:3.8rem}.capability{min-height:310px}.workflow-grid{grid-template-columns:1fr}.cta-card{padding:29px}.footer-nav{flex-wrap:wrap}}
+
+    /* ---------- Dark blue service theme and circular-edged controls ---------- */
+    body{background:var(--navy);color:var(--white)}header{background:rgba(7,26,56,.94);border-color:#24456f}.brand{color:var(--white)}.nav-links a{color:#c8daf0}.nav-links a:hover,.nav-links a.active{background:var(--royal);color:var(--white)}
+    .page-hero{background:radial-gradient(circle at 85% 15%,rgba(36,87,255,.42) 0 16%,transparent 16.2%),linear-gradient(145deg,#041128,var(--navy-2))}section{background:var(--navy)}.section-heading h2{color:var(--white)}.section-heading p{color:#aac0d9}
+    .capability-grid{grid-template-columns:repeat(3,1fr)}.capability{min-height:345px;border-color:#294a74;background:var(--navy-2)}.capability h3{color:var(--white)}.capability p{color:#aac0d9}.capability:hover{border-color:var(--sky);background:#103266}.use-cases span{border-color:#3b6292;background:#0a2248;color:#cde6ff}
+    .workflow{background:#041128}.cta{background:var(--navy)}footer{margin-top:0}.button,.nav-links a,.nav-action,.menu-button,.eyebrow,.capability-badge,.use-cases span{border-radius:999px!important}.menu-button{background:var(--royal);border-color:var(--sky);color:var(--white)}
+    @media(max-width:1100px){.capability-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:850px){.capability-grid{grid-template-columns:1fr}.nav-links{background:var(--navy-2);border-color:#3f6697}}
+  
+
+    /* ---------- GENEXIX lime identity and rounded interactive elements ---------- */
+    .brand-mark{
+      overflow:visible;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(145deg,#102e61,#06152f);
+      
+      clip-path:polygon(25% 0,75% 0,100% 25%,100% 75%,75% 100%,25% 100%,0 75%,0 25%);
+    }
+    .brand-mark::before,.brand-mark::after{
+      content:"";
+      position:absolute;
+      width:12%;
+      height:68%;
+      left:44%;
+      top:16%;
+      border-radius:999px;
+      background:var(--lime);
+      
+    }
+    .brand-mark::before{transform:rotate(45deg)}
+    .brand-mark::after{transform:rotate(-45deg)}
+    .nav-links a:hover,.nav-links a.active,.nav-action{
+      background:var(--lime);
+      color:var(--black)!important;
+      border-color:var(--lime);
+      
+    }
+    .button.primary,.form-panel .button{
+      background:var(--lime);
+      color:var(--black);
+      border-color:var(--lime);
+      
+    }
+    .button,.nav-links a,.nav-action,.menu-button,.prompt-button,.eyebrow,.capability-badge,.use-cases span,.channel{
+      border-radius:999px!important;
+    }
+    .eyebrow::before{background:var(--lime);}
+    .prompt-button.active,.prompt-button:hover,.capability-badge{
+      background:var(--lime);
+      color:var(--black);
+      border-color:var(--lime);
+      
+    }
+    .capability:hover,.principle:hover,.story-block:hover,.channel:hover{
+      
+      border-color:var(--lime);
+    }
+    .capability-icon,.channel-icon,.story-block strong,.check span{
+      background:var(--lime);
+      color:var(--black);
+      
+    }
+    h1 span{color:var(--lime);text-decoration-color:var(--royal);}
+    .page-hero h1{}
+  
+
+    /* ---------- Simplified finish with clean rounded borders ---------- */
+    .capability,.story-block,.principle,.contact-panel,.form-panel,.step,.metric,
+    .cta-card,.quote-card,.ai-console,.prompt,.response,.visual-card{
+      border-radius:28px;
+    }
+    .button:hover,.capability:hover,.principle:hover,.story-block:hover,.channel:hover{
+      transform:none;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    HTML READING GUIDE
+    <!DOCTYPE html> tells the browser to use modern HTML.
+    <html lang="en"> identifies the document language for browsers and accessibility tools.
+    <head> contains page information; <meta> controls encoding, scaling and search descriptions.
+    <title> sets the name shown on the browser tab; <style> contains this page's internal design rules.
+    <body> contains everything visible on the page.
+    <header> holds the top navigation; <nav> groups the main page links.
+    <main> identifies the unique content; <section> groups related content into clear page areas.
+    <div> is a general layout container; <span> marks a small inline part of text or a decorative shape.
+    <h1> is the single main page heading; <h2> and <h3> create lower heading levels.
+    <p> creates a paragraph; <a> creates a link; <button> creates an interactive control.
+    <article> contains a complete card or item; <aside> contains supporting information.
+    <form> collects visitor information; <label> names a field; <input>, <select> and <textarea> accept values.
+    <footer> contains the closing organization details and secondary links.
+    class attributes connect elements to reusable styles; id attributes give scripts a unique target.
+    aria-label and aria-expanded provide extra meaning for screen readers.
+    <script>
+    /*
+      JAVASCRIPT READING GUIDE
+      const creates a named value that should not be reassigned.
+      document represents the current page in the browser.
+      getElementById finds one element by its unique id.
+      querySelectorAll finds every element matching a CSS-style selector.
+      addEventListener waits for an action such as a click or form submission.
+      An arrow function, written as () => {}, groups instructions that run after an event.
+      classList adds, removes or toggles classes to change an element's appearance.
+      textContent safely changes the text displayed inside an element.
+      preventDefault stops a form or link from performing its normal action immediately.
+      Objects group related values; template literals use backticks to combine text and values.
+    */ contains the behavior that runs after the page content has loaded.
+  -->
+  <!-- Main navigation -->
+  <header><div class="container navbar"><a class="brand" href="index.html"><span class="brand-mark"></span>GENEXIX</a><nav class="nav-links" id="navLinks" aria-label="Main navigation"><a href="index.html">Home</a><a href="about.html">About</a><a class="active" href="service.html">Services</a><a class="nav-action" href="contact.html">Contact</a></nav><button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button></div></header>
+
+  <main>
+    <!-- Page introduction -->
+    <section class="page-hero"><div class="container hero-grid"><div><span class="eyebrow">GENEXIX capabilities</span><h1>A clearer path from question to outcome.</h1></div><p>Explore the core abilities behind GENEXIX and the types of work they are designed to support during the public preview.</p></div></section>
+
+    <!-- Complete collection of generation and intelligence services -->
+    <section><div class="container"><div class="section-heading"><span class="eyebrow">Generation services</span><h2>One creative system, many outputs.</h2><p>Choose a service, provide your source material and guide GENEXIX toward the result you need.</p></div><div class="capability-grid">
+      <article class="capability" data-number="01"><div class="capability-top"><span class="capability-icon">01</span><span class="capability-badge">Write</span></div><h3>Text to text</h3><p>Generate, rewrite, summarize or translate written content while controlling tone, length and audience.</p><div class="use-cases"><span>Writing</span><span>Summaries</span><span>Translation</span></div></article>
+      <article class="capability" data-number="02"><div class="capability-top"><span class="capability-icon">02</span><span class="capability-badge">Visual</span></div><h3>Text to image</h3><p>Create original illustrations, product concepts, artwork and marketing visuals from natural-language prompts.</p><div class="use-cases"><span>Art</span><span>Concepts</span><span>Campaigns</span></div></article>
+      <article class="capability" data-number="03"><div class="capability-top"><span class="capability-icon">03</span><span class="capability-badge">Edit</span></div><h3>Image to image</h3><p>Transform a source image, change its style, replace details or create a new visual direction.</p><div class="use-cases"><span>Restyle</span><span>Retouch</span><span>Variations</span></div></article>
+      <article class="capability" data-number="04"><div class="capability-top"><span class="capability-icon">04</span><span class="capability-badge">Motion</span></div><h3>Text to video</h3><p>Turn a scene description into short video sequences with guided action, mood and camera direction.</p><div class="use-cases"><span>Scenes</span><span>Ads</span><span>Storyboards</span></div></article>
+      <article class="capability" data-number="05"><div class="capability-top"><span class="capability-icon">05</span><span class="capability-badge">Animate</span></div><h3>Image to video</h3><p>Bring a still image to life with motion, depth, transitions and controlled camera movement.</p><div class="use-cases"><span>Animation</span><span>Parallax</span><span>Social video</span></div></article>
+      <article class="capability" data-number="06"><div class="capability-top"><span class="capability-icon">06</span><span class="capability-badge">Voice</span></div><h3>Text to speech</h3><p>Create natural spoken narration for lessons, explainers, presentations and accessible experiences.</p><div class="use-cases"><span>Narration</span><span>Learning</span><span>Accessibility</span></div></article>
+      <article class="capability" data-number="07"><div class="capability-top"><span class="capability-icon">07</span><span class="capability-badge">Listen</span></div><h3>Speech to text</h3><p>Transcribe interviews, meetings and recordings, then organize them into summaries and actions.</p><div class="use-cases"><span>Transcripts</span><span>Captions</span><span>Meeting notes</span></div></article>
+      <article class="capability" data-number="08"><div class="capability-top"><span class="capability-icon">08</span><span class="capability-badge">Sound</span></div><h3>Text to music</h3><p>Generate original instrumental ideas, background scores and sonic directions from a written brief.</p><div class="use-cases"><span>Scores</span><span>Intros</span><span>Background audio</span></div></article>
+      <article class="capability" data-number="09"><div class="capability-top"><span class="capability-icon">09</span><span class="capability-badge">Build</span></div><h3>Code generation</h3><p>Draft functions, explain existing code, identify common errors and produce structured prototypes.</p><div class="use-cases"><span>Prototypes</span><span>Debugging</span><span>Documentation</span></div></article>
+      <article class="capability" data-number="10"><div class="capability-top"><span class="capability-icon">10</span><span class="capability-badge">Read</span></div><h3>Document intelligence</h3><p>Extract answers, compare files and turn long documents into clear briefs, tables and decisions.</p><div class="use-cases"><span>PDF analysis</span><span>Comparison</span><span>Extraction</span></div></article>
+      <article class="capability" data-number="11"><div class="capability-top"><span class="capability-icon">11</span><span class="capability-badge">Design</span></div><h3>Text to 3D</h3><p>Create early 3D object concepts and scene directions for product, game and spatial workflows.</p><div class="use-cases"><span>Objects</span><span>Scenes</span><span>Product ideas</span></div></article>
+      <article class="capability" data-number="12"><div class="capability-top"><span class="capability-icon">12</span><span class="capability-badge">Analyze</span></div><h3>Multimodal analysis</h3><p>Reason across text, images, charts and uploaded material within one connected conversation.</p><div class="use-cases"><span>Research</span><span>Charts</span><span>Visual Q&amp;A</span></div></article>
+    </div></div></section>
+
+    <!-- Four-step example of a typical GENEXIX workflow -->
+    <section class="workflow"><div class="container"><div class="section-heading"><span class="eyebrow dark">A typical workflow</span><h2>Work with GENEXIX, step by step.</h2><p>Start broad, add context and remain in control as the response becomes more useful.</p></div><div class="workflow-grid">
+      <article class="step"><b>1</b><h3>Set the goal</h3><p>Describe the outcome, audience and important constraints.</p></article>
+      <article class="step"><b>2</b><h3>Add context</h3><p>Bring relevant notes, images or documents into the conversation.</p></article>
+      <article class="step"><b>3</b><h3>Review together</h3><p>Question assumptions, request alternatives and refine the direction.</p></article>
+      <article class="step"><b>4</b><h3>Decide and deliver</h3><p>Use your judgment to select, edit and apply the final result.</p></article>
+    </div></div></section>
+
+    <!-- Invitation to join the release preview -->
+    <section class="cta"><div class="container"><div class="cta-card"><h2>Bring GENEXIX into your next project.</h2><a class="button" href="contact.html">Request access →</a></div></div></section>
+  </main>
+
+  <!-- Organization footer -->
+  <footer><div class="container footer-row"><p>© <span id="year"></span> GENEXIX. Designed for thoughtful progress.</p><nav class="footer-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></div></footer>
+
+  <script>
+    // Control the mobile navigation menu.
+    const menuButton=document.getElementById('menuButton');
+    const navLinks=document.getElementById('navLinks');
+    menuButton.addEventListener('click',()=>{const isOpen=navLinks.classList.toggle('open');menuButton.textContent=isOpen?'×':'☰';menuButton.setAttribute('aria-expanded',isOpen)});
+    navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+    // Keep the copyright year current.
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

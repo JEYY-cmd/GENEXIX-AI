@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about GENEXIX, the thinking behind GENEXIX and our approach to responsible intelligence.">
+  <title>About GENEXIX</title>
+  <style>
+    /*
+      CSS READING GUIDE
+      :root stores reusable color and size variables so the theme is easy to change.
+      The * selector applies box sizing to every element on the page.
+      A selector beginning with a dot, such as .button, styles elements with that class.
+      display:flex places items in a flexible row or column; display:grid creates a grid layout.
+      margin controls space outside an element; padding controls space inside it.
+      color changes text color; background changes the area behind an element.
+      border-radius rounds corners; 999px creates the fully rounded pill-shaped tabs.
+      position controls how decorative and sticky elements are placed.
+      transition and :hover create smooth visual feedback when a pointer moves over an item.
+      @media rules rearrange layouts for tablets and phones so every page stays responsive.
+    */
+    /* ---------- Color system and global page rules ---------- */
+    :root{--navy:#071a38;--navy-2:#0c2854;--royal:#2457ff;--royal-2:#1743d8;--sky:#bfe3ff;--lime:#caff36;--lime-soft:#edffb3;--ice:#edf7ff;--white:#fff;--black:#05070b;--muted:#63728a;--line:#d4e4f2;--radius:24px;--shadow:0 24px 70px rgba(7,26,56,.15)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--navy);background:var(--white);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}button{font:inherit}.container{width:min(1160px,calc(100% - 36px));margin:auto}
+
+    /* ---------- Shared navigation ---------- */
+    header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}.navbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:28px}.brand{display:flex;align-items:center;gap:11px;font-size:1.14rem;font-weight:900;letter-spacing:-.04em}.brand-mark{position:relative;width:41px;height:41px;border-radius:13px;background:var(--navy);}.brand-mark::before,.brand-mark::after{content:"";position:absolute;border-radius:50%}.brand-mark::before{width:17px;height:17px;left:8px;top:8px;background:var(--royal)}.brand-mark::after{width:10px;height:10px;right:7px;bottom:7px;background:var(--sky)}.nav-links{display:flex;align-items:center;gap:5px}.nav-links a{padding:9px 14px;border-radius:999px;font-size:.85rem;font-weight:800}.nav-links a:hover,.nav-links a.active{background:var(--navy);color:var(--white)}.nav-action{border:1px solid var(--royal);background:var(--royal);color:var(--white)!important}.menu-button{display:none;width:43px;height:43px;border:1px solid var(--navy);border-radius:12px;background:var(--sky);color:var(--navy);cursor:pointer;font-size:1.15rem}
+
+    /* ---------- About page hero ---------- */
+    .page-hero{position:relative;overflow:hidden;padding:94px 0;background:var(--navy);color:var(--white)}.page-hero::after{content:"GENEXIX";position:absolute;right:-20px;bottom:-70px;color:transparent;-webkit-text-stroke:1px #24456f;font-size:clamp(7rem,18vw,15rem);font-weight:950;line-height:1}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.12fr .88fr;gap:60px;align-items:end}.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid #31547d;border-radius:999px;background:#0b244a;color:var(--sky);font-size:.69rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase}.eyebrow.light{border-color:var(--line);background:var(--ice);color:var(--royal-2)}h1{margin:21px 0 0;font-size:clamp(3.8rem,8vw,6.9rem);line-height:.88;letter-spacing:-.077em}.hero-grid p{margin:0;color:#b9cde3;font-size:1.05rem}
+
+    /* ---------- Story content ---------- */
+    section{padding:90px 0}.story-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}.story-title{position:sticky;top:112px}.story-title h2,.section-heading h2{margin:15px 0 0;color:var(--black);font-size:clamp(2.4rem,5vw,4rem);line-height:.98;letter-spacing:-.056em}.story-copy{display:grid;gap:18px}.story-block{padding:27px;border:1px solid var(--line);border-radius:20px;background:var(--ice)}.story-block strong{display:grid;place-items:center;width:40px;height:40px;margin-bottom:14px;border-radius:12px;background:var(--navy);color:var(--sky)}.story-block h3{margin:0 0 8px;color:var(--black)}.story-block p{margin:0;color:var(--muted)}
+
+    /* ---------- Principles ---------- */
+    .principles{background:var(--sky)}.section-heading{max-width:720px;margin-bottom:39px}.section-heading p{margin:10px 0 0;color:#355273}.principle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}.principle{padding:29px;border:1px solid #8cbce4;border-radius:20px;background:var(--white);}.principle-number{color:var(--royal);font-size:.7rem;font-weight:950;letter-spacing:.12em}.principle h3{margin:28px 0 8px;color:var(--black);font-size:1.25rem}.principle p{margin:0;color:var(--muted);font-size:.9rem}
+
+    /* ---------- Release approach and quote ---------- */
+    .approach-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}.approach-grid h2{margin:14px 0 18px;color:var(--black);font-size:clamp(2.4rem,5vw,4rem);line-height:.98;letter-spacing:-.056em}.approach-grid p{color:var(--muted)}.check-list{display:grid;gap:12px;margin-top:25px}.check{display:flex;align-items:center;gap:12px;font-weight:800}.check span{width:29px;height:29px;display:grid;place-items:center;border-radius:50%;background:var(--sky);color:var(--royal-2)}.quote-card{position:relative;padding:40px;border-radius:var(--radius);background:linear-gradient(145deg,var(--royal),var(--navy));color:var(--white);}.quote-card::before{content:"“";position:absolute;right:25px;top:5px;color:var(--sky);font:100px Georgia,serif;line-height:1}.quote-card blockquote{position:relative;margin:0;font-size:1.45rem;font-weight:750;line-height:1.4}.quote-card cite{display:block;margin-top:24px;color:#b9cde3;font-size:.76rem;font-style:normal;font-weight:800;text-transform:uppercase}.cta{padding-top:32px}.cta-card{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:42px;border:1px solid var(--line);border-radius:var(--radius);background:var(--ice)}.cta-card h2{margin:0;color:var(--black);font-size:clamp(2rem,4vw,3.2rem);line-height:1}.button{min-height:51px;display:inline-flex;align-items:center;justify-content:center;padding:0 23px;border:1px solid var(--royal);border-radius:12px;background:var(--royal);color:var(--white);font-size:.84rem;font-weight:900;white-space:nowrap;transition:.2s}.button:hover{transform:translateY(-3px);}
+
+    /* ---------- Footer and responsive layouts ---------- */
+    footer{margin-top:60px;padding:32px 0;background:var(--black);color:var(--white)}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:22px}.footer-row p{margin:0;color:#8fa0b5;font-size:.8rem}.footer-nav{display:flex;gap:18px;font-size:.78rem;font-weight:800}.footer-nav a:hover{color:var(--sky)}
+    @media(max-width:850px){.menu-button{display:block}.nav-links{position:absolute;left:18px;right:18px;top:78px;display:none;flex-direction:column;align-items:stretch;padding:10px;border:1px solid var(--navy);border-radius:16px;background:var(--white);}.nav-links.open{display:flex}.nav-links a{padding:12px 14px}.hero-grid,.story-grid,.approach-grid{grid-template-columns:1fr}.story-title{position:static}.principle-grid{grid-template-columns:1fr}.cta-card,.footer-row{align-items:flex-start;flex-direction:column}}
+    @media(max-width:540px){.container{width:min(100% - 26px,1160px)}.page-hero{padding:68px 0}h1{font-size:3.8rem}.quote-card{padding:30px}.cta-card{padding:29px}.footer-nav{flex-wrap:wrap}}
+
+    /* ---------- Dark blue page theme and rounded navigation controls ---------- */
+    body{background:var(--navy);color:var(--white)}header{background:rgba(7,26,56,.94);border-color:#24456f}.brand{color:var(--white)}.nav-links a{color:#c8daf0}.nav-links a:hover,.nav-links a.active{background:var(--royal);color:var(--white)}
+    .page-hero{background:linear-gradient(145deg,#041128,var(--navy-2))}section{background:var(--navy)}.story-title h2,.section-heading h2,.approach-grid h2{color:var(--white)}.story-block{border-color:#294a74;background:var(--navy-2)}.story-block h3{color:var(--white)}.story-block p,.approach-grid p{color:#aac0d9}
+    .principles{background:#081f46}.principle{border-color:#31547d;background:var(--navy-2)}.principle h3{color:var(--white)}.principle p{color:#aac0d9}.section-heading p{color:#aac0d9}.cta-card{border-color:#31547d;background:var(--navy-2)}.cta-card h2{color:var(--white)}footer{margin-top:0}
+    .button,.nav-links a,.nav-action,.menu-button,.eyebrow{border-radius:999px!important}.menu-button{background:var(--royal);border-color:var(--sky);color:var(--white)}
+    @media(max-width:850px){.nav-links{background:var(--navy-2);border-color:#3f6697}}
+  
+
+    /* ---------- GENEXIX lime identity and rounded interactive elements ---------- */
+    .brand-mark{
+      overflow:visible;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(145deg,#102e61,#06152f);
+      
+      clip-path:polygon(25% 0,75% 0,100% 25%,100% 75%,75% 100%,25% 100%,0 75%,0 25%);
+    }
+    .brand-mark::before,.brand-mark::after{
+      content:"";
+      position:absolute;
+      width:12%;
+      height:68%;
+      left:44%;
+      top:16%;
+      border-radius:999px;
+      background:var(--lime);
+      
+    }
+    .brand-mark::before{transform:rotate(45deg)}
+    .brand-mark::after{transform:rotate(-45deg)}
+    .nav-links a:hover,.nav-links a.active,.nav-action{
+      background:var(--lime);
+      color:var(--black)!important;
+      border-color:var(--lime);
+      
+    }
+    .button.primary,.form-panel .button{
+      background:var(--lime);
+      color:var(--black);
+      border-color:var(--lime);
+      
+    }
+    .button,.nav-links a,.nav-action,.menu-button,.prompt-button,.eyebrow,.capability-badge,.use-cases span,.channel{
+      border-radius:999px!important;
+    }
+    .eyebrow::before{background:var(--lime);}
+    .prompt-button.active,.prompt-button:hover,.capability-badge{
+      background:var(--lime);
+      color:var(--black);
+      border-color:var(--lime);
+      
+    }
+    .capability:hover,.principle:hover,.story-block:hover,.channel:hover{
+      
+      border-color:var(--lime);
+    }
+    .capability-icon,.channel-icon,.story-block strong,.check span{
+      background:var(--lime);
+      color:var(--black);
+      
+    }
+    h1 span{color:var(--lime);text-decoration-color:var(--royal);}
+    .page-hero h1{}
+  
+
+    /* ---------- Simplified finish with clean rounded borders ---------- */
+    .capability,.story-block,.principle,.contact-panel,.form-panel,.step,.metric,
+    .cta-card,.quote-card,.ai-console,.prompt,.response,.visual-card{
+      border-radius:28px;
+    }
+    .button:hover,.capability:hover,.principle:hover,.story-block:hover,.channel:hover{
+      transform:none;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    HTML READING GUIDE
+    <!DOCTYPE html> tells the browser to use modern HTML.
+    <html lang="en"> identifies the document language for browsers and accessibility tools.
+    <head> contains page information; <meta> controls encoding, scaling and search descriptions.
+    <title> sets the name shown on the browser tab; <style> contains this page's internal design rules.
+    <body> contains everything visible on the page.
+    <header> holds the top navigation; <nav> groups the main page links.
+    <main> identifies the unique content; <section> groups related content into clear page areas.
+    <div> is a general layout container; <span> marks a small inline part of text or a decorative shape.
+    <h1> is the single main page heading; <h2> and <h3> create lower heading levels.
+    <p> creates a paragraph; <a> creates a link; <button> creates an interactive control.
+    <article> contains a complete card or item; <aside> contains supporting information.
+    <form> collects visitor information; <label> names a field; <input>, <select> and <textarea> accept values.
+    <footer> contains the closing organization details and secondary links.
+    class attributes connect elements to reusable styles; id attributes give scripts a unique target.
+    aria-label and aria-expanded provide extra meaning for screen readers.
+    <script>
+    /*
+      JAVASCRIPT READING GUIDE
+      const creates a named value that should not be reassigned.
+      document represents the current page in the browser.
+      getElementById finds one element by its unique id.
+      querySelectorAll finds every element matching a CSS-style selector.
+      addEventListener waits for an action such as a click or form submission.
+      An arrow function, written as () => {}, groups instructions that run after an event.
+      classList adds, removes or toggles classes to change an element's appearance.
+      textContent safely changes the text displayed inside an element.
+      preventDefault stops a form or link from performing its normal action immediately.
+      Objects group related values; template literals use backticks to combine text and values.
+    */ contains the behavior that runs after the page content has loaded.
+  -->
+  <!-- Main navigation -->
+  <header><div class="container navbar"><a class="brand" href="index.html"><span class="brand-mark"></span>GENEXIX</a><nav class="nav-links" id="navLinks" aria-label="Main navigation"><a href="index.html">Home</a><a class="active" href="about.html">About</a><a href="service.html">Services</a><a class="nav-action" href="contact.html">Contact</a></nav><button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button></div></header>
+
+  <main>
+    <!-- Organization introduction -->
+    <section class="page-hero"><div class="container hero-grid"><div><span class="eyebrow">About GENEXIX</span><h1>Building useful intelligence with human direction.</h1></div><p>GENEXIX is an independent research and product organization focused on creating capable systems that help people understand, decide and create.</p></div></section>
+
+    <!-- Origin, motivation and release vision -->
+    <section><div class="container story-grid">
+      <div class="story-title"><span class="eyebrow light">The story</span><h2>Why we built GENEXIX.</h2></div>
+      <div class="story-copy">
+        <article class="story-block"><strong>01</strong><h3>Where it began</h3><p>GENEXIX began with a simple observation: powerful models are most valuable when people can understand their output, guide their behavior and apply them to real work without unnecessary complexity.</p></article>
+        <article class="story-block"><strong>02</strong><h3>What prompted the release</h3><p>Teams told us they were moving between separate tools for research, analysis, visual understanding and writing. GENEXIX was prompted by the need for a more coherent assistant—one that can carry context across different forms of work.</p></article>
+        <article class="story-block"><strong>03</strong><h3>What GENEXIX represents</h3><p>This release brings our latest reasoning and multimodal research into a focused workspace. It is designed to collaborate rather than take over, giving people clear controls and keeping final decisions in human hands.</p></article>
+      </div>
+    </div></section>
+
+    <!-- Principles that guide model development -->
+    <section class="principles"><div class="container"><div class="section-heading"><span class="eyebrow light">Our principles</span><h2>Capability needs direction.</h2><p>These commitments shape how we research, evaluate and release intelligent systems.</p></div><div class="principle-grid">
+      <article class="principle"><span class="principle-number">PRINCIPLE 01</span><h3>Useful by design</h3><p>We begin with real problems and measure whether the model makes work clearer, faster or more thoughtful.</p></article>
+      <article class="principle"><span class="principle-number">PRINCIPLE 02</span><h3>People stay in control</h3><p>Outputs should be reviewable, editable and easy to challenge before they influence important decisions.</p></article>
+      <article class="principle"><span class="principle-number">PRINCIPLE 03</span><h3>Progress with care</h3><p>New capabilities are evaluated in stages, with attention to reliability, misuse and unintended effects.</p></article>
+    </div></div></section>
+
+    <!-- Explanation of the preview and evaluation approach -->
+    <section><div class="container approach-grid"><div><span class="eyebrow light">The preview approach</span><h2>Learning with early users.</h2><p>GENEXIX is beginning with a limited public preview so we can observe where it creates value, where it falls short and how people use it in diverse working environments.</p><div class="check-list"><div class="check"><span>✓</span>Staged access and measured expansion</div><div class="check"><span>✓</span>Clear feedback and reporting channels</div><div class="check"><span>✓</span>Ongoing quality and safety evaluation</div><div class="check"><span>✓</span>Transparent release communication</div></div></div><aside class="quote-card"><blockquote>The best intelligent system is not the one that speaks the loudest. It is the one that helps people see the next step clearly.</blockquote><cite>GENEXIX product principle</cite></aside></div></section>
+
+    <!-- Invitation to explore the model -->
+    <section class="cta"><div class="container"><div class="cta-card"><h2>See what GENEXIX can do.</h2><a class="button" href="service.html">Explore services →</a></div></div></section>
+  </main>
+
+  <!-- Organization footer -->
+  <footer><div class="container footer-row"><p>© <span id="year"></span> GENEXIX. Designed for thoughtful progress.</p><nav class="footer-nav"><a href="index.html">Home</a><a href="service.html">Services</a><a href="contact.html">Contact</a></nav></div></footer>
+
+  <script>
+    // Handle the responsive navigation menu.
+    const menuButton=document.getElementById('menuButton');
+    const navLinks=document.getElementById('navLinks');
+    menuButton.addEventListener('click',()=>{const isOpen=navLinks.classList.toggle('open');menuButton.textContent=isOpen?'×':'☰';menuButton.setAttribute('aria-expanded',isOpen)});
+    navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+    // Insert the current year into the footer.
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

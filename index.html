@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet GENEXIX, GENEXIX's newest intelligent model for research, creation and everyday work.">
+  <title>GENEXIX | The new generation of AI</title>
+  <style>
+    /*
+      CSS READING GUIDE
+      :root stores reusable color and size variables so the theme is easy to change.
+      The * selector applies box sizing to every element on the page.
+      A selector beginning with a dot, such as .button, styles elements with that class.
+      display:flex places items in a flexible row or column; display:grid creates a grid layout.
+      margin controls space outside an element; padding controls space inside it.
+      color changes text color; background changes the area behind an element.
+      border-radius rounds corners; 999px creates the fully rounded pill-shaped tabs.
+      position controls how decorative and sticky elements are placed.
+      transition and :hover create smooth visual feedback when a pointer moves over an item.
+      @media rules rearrange layouts for tablets and phones so every page stays responsive.
+    */
+    /* ---------- Color system and global page rules ---------- */
+    :root{--navy:#071a38;--navy-2:#0c2854;--royal:#2457ff;--royal-2:#1743d8;--sky:#bfe3ff;--lime:#caff36;--lime-soft:#edffb3;--ice:#edf7ff;--white:#fff;--black:#05070b;--muted:#63728a;--line:#d4e4f2;--radius:24px;--shadow:0 24px 70px rgba(7,26,56,.15)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--navy);background:var(--white);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}button{font:inherit}.container{width:min(1160px,calc(100% - 36px));margin:auto}
+
+    /* ---------- Release announcement and navigation ---------- */
+    .announcement{padding:8px 18px;background:var(--royal);color:var(--white);text-align:center;font-size:.72rem;font-weight:850;letter-spacing:.06em}.announcement span{color:var(--sky)}
+    header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}.navbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:28px}.brand{display:flex;align-items:center;gap:11px;font-size:1.14rem;font-weight:900;letter-spacing:-.04em}.brand-mark{position:relative;width:41px;height:41px;border-radius:13px;background:var(--navy);}.brand-mark::before,.brand-mark::after{content:"";position:absolute;border-radius:50%}.brand-mark::before{width:17px;height:17px;left:8px;top:8px;background:var(--royal)}.brand-mark::after{width:10px;height:10px;right:7px;bottom:7px;background:var(--sky)}.nav-links{display:flex;align-items:center;gap:5px}.nav-links a{padding:9px 14px;border-radius:999px;font-size:.85rem;font-weight:800}.nav-links a:hover,.nav-links a.active{background:var(--navy);color:var(--white)}.nav-action{border:1px solid var(--royal);background:var(--royal);color:var(--white)!important}.menu-button{display:none;width:43px;height:43px;border:1px solid var(--navy);border-radius:12px;background:var(--sky);color:var(--navy);cursor:pointer;font-size:1.15rem}
+
+    /* ---------- Hero and product visualization ---------- */
+    .hero{position:relative;overflow:hidden;padding:88px 0 78px;background:linear-gradient(135deg,var(--white) 0 60%,var(--ice) 60%)}.hero::before{content:"";position:absolute;right:-170px;top:-190px;width:560px;height:560px;border:75px solid rgba(36,87,255,.1);border-radius:50%}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.03fr .97fr;gap:65px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--ice);color:var(--royal-2);font-size:.69rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase}.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--royal);}h1{max-width:720px;margin:23px 0 22px;color:var(--black);font-size:clamp(3.8rem,7.4vw,7rem);line-height:.88;letter-spacing:-.077em}h1 span{display:block;color:var(--royal)}.lead{max-width:590px;margin:0;color:var(--muted);font-size:1.08rem}.button-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:31px}.button{min-height:51px;display:inline-flex;align-items:center;justify-content:center;padding:0 23px;border:1px solid var(--navy);border-radius:12px;font-size:.84rem;font-weight:900;cursor:pointer;transition:.2s}.button.primary{border-color:var(--royal);background:var(--royal);color:var(--white);}.button.secondary{background:var(--white)}.button:hover{transform:translateY(-3px);}.release-meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:34px;padding-top:25px;border-top:1px solid var(--line)}.release-meta div{font-size:.73rem;color:var(--muted)}.release-meta b{display:block;color:var(--navy);font-size:.85rem}
+    .ai-console{position:relative;overflow:hidden;border:1px solid #26508c;border-radius:28px;background:var(--navy);color:var(--white);}.console-top{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;border-bottom:1px solid #244267;background:#091e40}.console-brand{display:flex;align-items:center;gap:8px;font-size:.74rem;font-weight:900}.status{display:flex;align-items:center;gap:7px;color:var(--sky);font-size:.65rem;text-transform:uppercase}.status::before{content:"";width:7px;height:7px;border-radius:50%;background:#55dba8;}.console-body{min-height:405px;padding:24px}.prompt-label{color:#86bffa;font-size:.66rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.prompt{margin:9px 0 20px;padding:15px;border:1px solid #2e527e;border-radius:13px;background:#0d2a56;font-size:.88rem}.response{min-height:165px;padding:18px;border-radius:15px;background:var(--white);color:var(--navy);font-size:.86rem;white-space:pre-line}.response::after{content:"";display:inline-block;width:7px;height:16px;margin-left:3px;vertical-align:-3px;background:var(--royal);animation:blink 1s infinite}@keyframes blink{50%{opacity:0}}.prompt-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:17px}.prompt-button{padding:10px 8px;border:1px solid #355b86;border-radius:10px;background:#0b244b;color:#d7ebff;cursor:pointer;font-size:.68rem;font-weight:800}.prompt-button:hover,.prompt-button.active{border-color:var(--sky);background:var(--royal)}
+
+    /* ---------- Capability summary cards ---------- */
+    section{padding:90px 0}.section-heading{max-width:720px;margin-bottom:39px}.section-heading.center{margin-inline:auto;text-align:center}.section-heading h2{margin:14px 0 10px;color:var(--black);font-size:clamp(2.4rem,5vw,4rem);line-height:.98;letter-spacing:-.056em}.section-heading p{margin:0;color:var(--muted)}.capability-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.capability{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:var(--ice);transition:.25s}.capability:hover{border-color:var(--royal);transform:translateY(-5px);}.capability-icon{width:51px;height:51px;display:grid;place-items:center;border-radius:15px;background:var(--navy);color:var(--sky);font-weight:950}.capability h3{margin:19px 0 8px;color:var(--black)}.capability p{margin:0;color:var(--muted);font-size:.9rem}.capability a{display:inline-block;margin-top:20px;color:var(--royal-2);font-size:.78rem;font-weight:900}
+
+    /* ---------- Release performance strip ---------- */
+    .performance{background:var(--navy);color:var(--white)}.performance-grid{display:grid;grid-template-columns:1.25fr repeat(3,1fr);gap:18px;align-items:center}.performance-intro h2{margin:0;font-size:clamp(2rem,4vw,3.2rem);line-height:1}.performance-intro p{margin:12px 0 0;color:#a9bdd6}.metric{padding:24px;border:1px solid #294a74;border-radius:18px;background:#0b234a}.metric b{display:block;color:var(--sky);font-size:1.9rem;line-height:1}.metric span{color:#a9bdd6;font-size:.75rem}
+
+    /* ---------- Final call to action and footer ---------- */
+    .cta{padding:58px 0}.cta-card{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:43px;border-radius:var(--radius);background:linear-gradient(120deg,var(--royal),var(--navy));color:var(--white);}.cta-card h2{max-width:690px;margin:0;font-size:clamp(2rem,5vw,3.5rem);line-height:1;letter-spacing:-.05em}.cta-card .button{flex:0 0 auto;border-color:var(--white);background:var(--white);color:var(--navy)}footer{margin-top:60px;padding:32px 0;background:var(--black);color:var(--white)}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:22px}.footer-row p{margin:0;color:#8fa0b5;font-size:.8rem}.footer-nav{display:flex;gap:18px;font-size:.78rem;font-weight:800}.footer-nav a:hover{color:var(--sky)}
+
+    /* ---------- Responsive layouts ---------- */
+    @media(max-width:850px){.menu-button{display:block}.nav-links{position:absolute;left:18px;right:18px;top:78px;display:none;flex-direction:column;align-items:stretch;padding:10px;border:1px solid var(--navy);border-radius:16px;background:var(--white);}.nav-links.open{display:flex}.nav-links a{padding:12px 14px}.hero-grid{grid-template-columns:1fr}.capability-grid{grid-template-columns:1fr}.performance-grid{grid-template-columns:1fr 1fr}.performance-intro{grid-column:1/-1}.cta-card,.footer-row{align-items:flex-start;flex-direction:column}}
+    @media(max-width:540px){.container{width:min(100% - 26px,1160px)}.announcement{font-size:.62rem}.hero{padding-top:62px}h1{font-size:3.7rem}.console-body{padding:17px}.prompt-buttons{grid-template-columns:1fr}.performance-grid{grid-template-columns:1fr}.performance-intro{grid-column:auto}.release-meta{gap:14px}.cta-card{padding:29px}.footer-nav{flex-wrap:wrap}}
+
+    /* ---------- Dark release theme and fully rounded controls ---------- */
+    body{background:var(--navy);color:var(--white)}
+    header{background:rgba(7,26,56,.94);border-color:#24456f}.brand{color:var(--white)}
+    .nav-links a{color:#c8daf0}.nav-links a:hover,.nav-links a.active{background:var(--royal);color:var(--white)}
+    .hero{background:radial-gradient(circle at 82% 18%,rgba(36,87,255,.28) 0 18%,transparent 18.2%),linear-gradient(145deg,var(--navy),#081f46)}
+    h1,.section-heading h2{color:var(--white)}.lead,.section-heading p{color:#aac0d9}.release-meta{border-color:#294a74}.release-meta div{color:#91aac6}.release-meta b{color:var(--white)}
+    section{background:var(--navy)}.capability{border-color:#294a74;background:var(--navy-2)}.capability h3{color:var(--white)}.capability p{color:#aac0d9}.capability:hover{border-color:var(--sky);background:#103266}.capability-icon{background:var(--royal);color:var(--white)}.capability a{color:var(--sky)}
+    .performance{background:#041128}.cta{background:var(--navy)}footer{margin-top:0}
+    .button,.nav-links a,.nav-action,.menu-button,.prompt-button,.eyebrow{border-radius:999px!important}
+    .menu-button{background:var(--royal);border-color:var(--sky);color:var(--white)}
+    @media(max-width:850px){.nav-links{background:var(--navy-2);border-color:#3f6697}}
+  
+
+    /* ---------- GENEXIX lime identity and rounded interactive elements ---------- */
+    .brand-mark{
+      overflow:visible;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(145deg,#102e61,#06152f);
+      
+      clip-path:polygon(25% 0,75% 0,100% 25%,100% 75%,75% 100%,25% 100%,0 75%,0 25%);
+    }
+    .brand-mark::before,.brand-mark::after{
+      content:"";
+      position:absolute;
+      width:12%;
+      height:68%;
+      left:44%;
+      top:16%;
+      border-radius:999px;
+      background:var(--lime);
+      
+    }
+    .brand-mark::before{transform:rotate(45deg)}
+    .brand-mark::after{transform:rotate(-45deg)}
+    .nav-links a:hover,.nav-links a.active,.nav-action{
+      background:var(--lime);
+      color:var(--black)!important;
+      border-color:var(--lime);
+      
+    }
+    .button.primary,.form-panel .button{
+      background:var(--lime);
+      color:var(--black);
+      border-color:var(--lime);
+      
+    }
+    .button,.nav-links a,.nav-action,.menu-button,.prompt-button,.eyebrow,.capability-badge,.use-cases span,.channel{
+      border-radius:999px!important;
+    }
+    .eyebrow::before{background:var(--lime);}
+    .prompt-button.active,.prompt-button:hover,.capability-badge{
+      background:var(--lime);
+      color:var(--black);
+      border-color:var(--lime);
+      
+    }
+    .capability:hover,.principle:hover,.story-block:hover,.channel:hover{
+      
+      border-color:var(--lime);
+    }
+    .capability-icon,.channel-icon,.story-block strong,.check span{
+      background:var(--lime);
+      color:var(--black);
+      
+    }
+    h1 span{color:var(--lime);text-decoration-color:var(--royal);}
+    .page-hero h1{}
+  
+
+    /* ---------- Simplified finish with clean rounded borders ---------- */
+    .capability,.story-block,.principle,.contact-panel,.form-panel,.step,.metric,
+    .cta-card,.quote-card,.ai-console,.prompt,.response,.visual-card{
+      border-radius:28px;
+    }
+    .button:hover,.capability:hover,.principle:hover,.story-block:hover,.channel:hover{
+      transform:none;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    HTML READING GUIDE
+    <!DOCTYPE html> tells the browser to use modern HTML.
+    <html lang="en"> identifies the document language for browsers and accessibility tools.
+    <head> contains page information; <meta> controls encoding, scaling and search descriptions.
+    <title> sets the name shown on the browser tab; <style> contains this page's internal design rules.
+    <body> contains everything visible on the page.
+    <header> holds the top navigation; <nav> groups the main page links.
+    <main> identifies the unique content; <section> groups related content into clear page areas.
+    <div> is a general layout container; <span> marks a small inline part of text or a decorative shape.
+    <h1> is the single main page heading; <h2> and <h3> create lower heading levels.
+    <p> creates a paragraph; <a> creates a link; <button> creates an interactive control.
+    <article> contains a complete card or item; <aside> contains supporting information.
+    <form> collects visitor information; <label> names a field; <input>, <select> and <textarea> accept values.
+    <footer> contains the closing organization details and secondary links.
+    class attributes connect elements to reusable styles; id attributes give scripts a unique target.
+    aria-label and aria-expanded provide extra meaning for screen readers.
+    <script>
+    /*
+      JAVASCRIPT READING GUIDE
+      const creates a named value that should not be reassigned.
+      document represents the current page in the browser.
+      getElementById finds one element by its unique id.
+      querySelectorAll finds every element matching a CSS-style selector.
+      addEventListener waits for an action such as a click or form submission.
+      An arrow function, written as () => {}, groups instructions that run after an event.
+      classList adds, removes or toggles classes to change an element's appearance.
+      textContent safely changes the text displayed inside an element.
+      preventDefault stops a form or link from performing its normal action immediately.
+      Objects group related values; template literals use backticks to combine text and values.
+    */ contains the behavior that runs after the page content has loaded.
+  -->
+  <!-- Product release announcement -->
+  <div class="announcement"><span>NEW RELEASE</span> · GENEXIX is now available in public preview</div>
+
+  <!-- Main navigation shared across the release website -->
+  <header><div class="container navbar"><a class="brand" href="index.html"><span class="brand-mark"></span>GENEXIX</a><nav class="nav-links" id="navLinks" aria-label="Main navigation"><a class="active" href="index.html">Home</a><a href="about.html">About</a><a href="service.html">Services</a><a class="nav-action" href="contact.html">Contact</a></nav><button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button></div></header>
+
+  <main>
+    <!-- Hero introduces the model and provides key actions -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div><span class="eyebrow">Introducing GENEXIX</span><h1>Intelligence that moves ideas <span>forward.</span></h1><p class="lead">Our newest AI release brings stronger reasoning, clearer communication and multimodal understanding into one focused model for modern teams.</p><div class="button-row"><a class="button primary" href="contact.html">Request early access →</a><a class="button secondary" href="service.html">Explore services</a></div><div class="release-meta"><div><b>Public preview</b>Release stage</div><div><b>Global English</b>Initial language</div><div><b>Web workspace</b>First platform</div></div></div>
+        <div class="ai-console" aria-label="Interactive GENEXIX response preview"><div class="console-top"><span class="console-brand"><span class="brand-mark" style="width:27px;height:27px;border-radius:9px"></span>GENEXIX</span><span class="status">Ready</span></div><div class="console-body"><div class="prompt-label">Selected prompt</div><div class="prompt" id="promptText">Turn a complex product idea into a clear launch plan.</div><div class="response" id="responseText">I’ll organize the launch into four practical phases:
+
+1. Define the audience and core promise.
+2. Validate the message with a small user group.
+3. Prepare the release content and support plan.
+4. Launch, measure adoption and improve quickly.</div><div class="prompt-buttons"><button class="prompt-button active" data-prompt="plan">Plan</button><button class="prompt-button" data-prompt="research">Research</button><button class="prompt-button" data-prompt="create">Create</button></div></div></div>
+      </div>
+    </section>
+
+    <!-- Popular generation services available in the new release -->
+    <section><div class="container"><div class="section-heading center"><span class="eyebrow">Generation studio</span><h2>Create across every format.</h2><p>Move naturally between words, images, video and sound without leaving the GENEXIX workspace.</p></div><div class="capability-grid">
+      <article class="capability"><div class="capability-icon">01</div><h3>Text to image</h3><p>Turn a written idea into polished illustrations, concepts and campaign visuals.</p><a href="service.html">Explore image generation →</a></article>
+      <article class="capability"><div class="capability-icon">02</div><h3>Image to video</h3><p>Animate still images into short motion sequences with guided camera movement.</p><a href="service.html">Explore video generation →</a></article>
+      <article class="capability"><div class="capability-icon">03</div><h3>Image to image</h3><p>Restyle, expand and transform an existing visual while preserving its main subject.</p><a href="service.html">Explore visual editing →</a></article>
+      <article class="capability"><div class="capability-icon">04</div><h3>Text to video</h3><p>Create storyboards and short video scenes directly from a detailed description.</p><a href="service.html">Explore video tools →</a></article>
+      <article class="capability"><div class="capability-icon">05</div><h3>Text to speech</h3><p>Generate clear, expressive narration for presentations, lessons and media.</p><a href="service.html">Explore voice tools →</a></article>
+      <article class="capability"><div class="capability-icon">06</div><h3>Speech to text</h3><p>Convert recordings into organized transcripts, summaries and useful action points.</p><a href="service.html">Explore transcription →</a></article>
+    </div></div></section>
+
+    <!-- Product metrics are presented as launch targets for the preview -->
+    <section class="performance"><div class="container performance-grid"><div class="performance-intro"><h2>Focused on quality,<br>speed and control.</h2><p>The preview is built to feel responsive while keeping people in charge of the final result.</p></div><div class="metric"><b>2×</b><span>Faster first response target</span></div><div class="metric"><b>128K</b><span>Extended context window</span></div><div class="metric"><b>24/7</b><span>Workspace availability</span></div></div></section>
+
+    <!-- Closing invitation for early users -->
+    <section class="cta"><div class="container"><div class="cta-card"><h2>Help shape the next generation of GENEXIX.</h2><a class="button" href="contact.html">Join the preview →</a></div></div></section>
+  </main>
+
+  <!-- Organization footer -->
+  <footer><div class="container footer-row"><p>© <span id="year"></span> GENEXIX. Designed for thoughtful progress.</p><nav class="footer-nav"><a href="about.html">About</a><a href="service.html">Services</a><a href="contact.html">Contact</a></nav></div></footer>
+
+  <script>
+    // Toggle navigation on phones and smaller tablets.
+    const menuButton=document.getElementById('menuButton');
+    const navLinks=document.getElementById('navLinks');
+    menuButton.addEventListener('click',()=>{const isOpen=navLinks.classList.toggle('open');menuButton.textContent=isOpen?'×':'☰';menuButton.setAttribute('aria-expanded',isOpen)});
+    navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+    // Change the sample prompt so visitors can preview different use cases.
+    const examples={
+      plan:{prompt:'Turn a complex product idea into a clear launch plan.',response:'I’ll organize the launch into four practical phases:\n\n1. Define the audience and core promise.\n2. Validate the message with a small user group.\n3. Prepare the release content and support plan.\n4. Launch, measure adoption and improve quickly.'},
+      research:{prompt:'Summarize the strongest themes across these research notes.',response:'The notes point to three consistent themes:\n\n1. People value speed, but not at the cost of accuracy.\n2. Clear guidance builds more confidence than extra features.\n3. Teams want flexible tools that fit existing workflows.'},
+      create:{prompt:'Develop a clear campaign idea for a sustainable product.',response:'Campaign direction: “Made for what comes next.”\n\nLead with durability, honest material choices and the long-term value of buying less—but buying better. Use real customer routines rather than abstract sustainability claims.'}
+    };
+    const promptText=document.getElementById('promptText');
+    const responseText=document.getElementById('responseText');
+    document.querySelectorAll('.prompt-button').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.prompt-button').forEach(item=>item.classList.remove('active'));button.classList.add('active');const example=examples[button.dataset.prompt];promptText.textContent=example.prompt;responseText.textContent=example.response}));
+
+    // Keep the footer date current.
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
